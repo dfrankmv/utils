@@ -8,7 +8,7 @@ def millis2datetime(ms:int, format:str="%Y-%m-%d %H:%M:%S.{ms}", timezone:str="E
         tz = ZoneInfo(timezone)
     except Exception:
         raise ValueError(f"Invalid timezone")
-    dt = datetime.fromtimestamp(ms/1000, tz=tz).replace(tzinfo=None)
+    dt = datetime.datetime.fromtimestamp(ms/1000, tz=tz).replace(tzinfo=None)
     return dt.strftime(format.replace("{ms}", f"{dt.microsecond // 1000:03d}"))
 
 if __name__ == "__main__":

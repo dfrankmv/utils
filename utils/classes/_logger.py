@@ -12,6 +12,8 @@ class Logger(Multiton):
         self.fn_width = 0 # WIDTH OF FUNCTION NAME COLUMN
         self.blacklist = []
 
+        mkdir("logs")
+
         self.logger = logging.getLogger(name)
         self.handler = TimedRotatingFileHandler(f"logs/{name}.log", when="midnight", interval=1, backupCount=32, encoding="utf-8")
         self.formatter = logging.Formatter("%(message)s")
